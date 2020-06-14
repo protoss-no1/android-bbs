@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ttit.myapp.R;
+import com.ttit.myapp.api.Api;
+import com.ttit.myapp.api.ApiConfig;
+import com.ttit.myapp.api.TtitCallback;
 import com.ttit.myapp.util.AppConfig;
 import com.ttit.myapp.util.StringUtils;
 
@@ -59,43 +62,73 @@ public class LoginActivity extends BaseActivity {
             showToast("请输入密码");
             return;
         }
-
-        //第一步创建OKHttpClient
-        OkHttpClient client = new OkHttpClient.Builder()
-                .build();
-        Map m = new HashMap();
-        m.put("mobile", account);
-        m.put("password", pwd);
-        JSONObject jsonObject = new JSONObject(m);
-        String jsonStr = jsonObject.toString();
-        RequestBody requestBodyJson =
-                RequestBody.create(MediaType.parse("application/json;charset=utf-8")
-                        , jsonStr);
-        //第三步创建Rquest
-        Request request = new Request.Builder()
-                .url(AppConfig.BASE_URl + "/app/login")
-                .addHeader("contentType", "application/json;charset=UTF-8")
-                .post(requestBodyJson)
-                .build();
-        //第四步创建call回调对象
-        final Call call = client.newCall(request);
-        //第五步发起请求
-        call.enqueue(new Callback() {
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        params.put("mobile", account);
+        params.put("password", pwd);
+        Api.config(ApiConfig.LOGIN, params).postRequest(new TtitCallback() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("onFailure", e.getMessage());
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String result = response.body().string();
+            public void onSuccess(final String res) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        showToast(result);
+                        showToast(res);
                     }
                 });
             }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
         });
     }
+
+//    private void login(String account, String pwd) {
+//        if (StringUtils.isEmpty(account)) {
+//            showToast("请输入账号");
+//            return;
+//        }
+//        if (StringUtils.isEmpty(pwd)) {
+//            showToast("请输入密码");
+//            return;
+//        }
+//
+//        //第一步创建OKHttpClient
+//        OkHttpClient client = new OkHttpClient.Builder()
+//                .build();
+//        Map m = new HashMap();
+//        m.put("mobile", account);
+//        m.put("password", pwd);
+//        JSONObject jsonObject = new JSONObject(m);
+//        String jsonStr = jsonObject.toString();
+//        RequestBody requestBodyJson =
+//                RequestBody.create(MediaType.parse("application/json;charset=utf-8")
+//                        , jsonStr);
+//        //第三步创建Rquest
+//        Request request = new Request.Builder()
+//                .url(AppConfig.BASE_URl + "/app/login")
+//                .addHeader("contentType", "application/json;charset=UTF-8")
+//                .post(requestBodyJson)
+//                .build();
+//        //第四步创建call回调对象
+//        final Call call = client.newCall(request);
+//        //第五步发起请求
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                Log.e("onFailure", e.getMessage());
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                final String result = response.body().string();
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        showToast(result);
+//                    }
+//                });
+//            }
+//        });
+//    }
 }
