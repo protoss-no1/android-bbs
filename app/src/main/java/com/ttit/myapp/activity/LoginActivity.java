@@ -1,14 +1,10 @@
 package com.ttit.myapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ttit.myapp.R;
@@ -16,22 +12,9 @@ import com.ttit.myapp.api.Api;
 import com.ttit.myapp.api.ApiConfig;
 import com.ttit.myapp.api.TtitCallback;
 import com.ttit.myapp.entity.LoginResponse;
-import com.ttit.myapp.util.AppConfig;
 import com.ttit.myapp.util.StringUtils;
 
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class LoginActivity extends BaseActivity {
 
@@ -76,11 +59,8 @@ public class LoginActivity extends BaseActivity {
                 LoginResponse loginResponse = gson.fromJson(res, LoginResponse.class);
                 if (loginResponse.getCode() == 0) {
                     String token = loginResponse.getToken();
-//                    SharedPreferences sp = getSharedPreferences("sp_ttit", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = sp.edit();
-//                    editor.putString("token", token);
-//                    editor.commit();
                     saveStringToSp("token", token);
+                    navigateTo(HomeActivity.class);
                     showToastSync("登录成功");
                 } else {
                     showToastSync("登录失败");
