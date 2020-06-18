@@ -2,6 +2,7 @@ package com.ttit.myapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,10 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.ttit.myapp.R;
 import com.ttit.myapp.api.Api;
 import com.ttit.myapp.api.ApiConfig;
 import com.ttit.myapp.api.TtitCallback;
+import com.ttit.myapp.entity.LoginResponse;
 import com.ttit.myapp.util.AppConfig;
 import com.ttit.myapp.util.StringUtils;
 
@@ -68,12 +71,20 @@ public class LoginActivity extends BaseActivity {
         Api.config(ApiConfig.LOGIN, params).postRequest(new TtitCallback() {
             @Override
             public void onSuccess(final String res) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        showToast(res);
-                    }
-                });
+                Log.e("onSuccess", res);
+                Gson gson = new Gson();
+                LoginResponse loginResponse = gson.fromJson(res, LoginResponse.class);
+                if (loginResponse.getCode() == 0) {
+                    String token = loginResponse.getToken();
+//                    SharedPreferences sp = getSharedPreferences("sp_ttit", MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = sp.edit();
+//                    editor.putString("token", token);
+//                    editor.commit();
+                    saveStringToSp("token", token);
+                    showToastSync("登录成功");
+                } else {
+                    showToastSync("登录失败");
+                }
             }
 
             @Override
