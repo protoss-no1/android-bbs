@@ -1,8 +1,5 @@
 package com.ttit.myapp.activity;
 
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -18,7 +15,7 @@ import com.ttit.myapp.fragment.MyFragment;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     private String[] mTitles = {"首页", "收藏", "我的"};
     private int[] mIconUnselectIds = {
@@ -33,11 +30,18 @@ public class HomeActivity extends AppCompatActivity {
     private CommonTabLayout commonTabLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+    protected int initLayout() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    protected void initView() {
         viewPager = findViewById(R.id.viewpager);
         commonTabLayout = findViewById(R.id.commonTabLayout);
+    }
+
+    @Override
+    protected void initData() {
         mFragments.add(HomeFragment.newInstance());
         mFragments.add(CollectFragment.newInstance());
         mFragments.add(MyFragment.newInstance());
@@ -53,6 +57,22 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselect(int position) {
+            }
+        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                commonTabLayout.setCurrentTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), mTitles, mFragments));

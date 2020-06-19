@@ -1,6 +1,5 @@
 package com.ttit.myapp.activity;
 
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,12 +22,19 @@ public class LoginActivity extends BaseActivity {
     private Button btnLogin;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    protected int initLayout() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    protected void initView() {
         etAccount = findViewById(R.id.et_account);
         etPwd = findViewById(R.id.et_pwd);
         btnLogin = findViewById(R.id.btn_login);
+    }
+
+    @Override
+    protected void initData() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
