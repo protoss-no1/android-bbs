@@ -4,11 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ttit.myapp.R;
+import com.ttit.myapp.adapter.VideoAdapter;
+import com.ttit.myapp.entity.VideoEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VideoFragment extends Fragment {
 
@@ -27,8 +33,22 @@ public class VideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_video, container, false);
-        TextView tv = v.findViewById(R.id.title);
-        tv.setText(title);
+        RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        List<VideoEntity> datas = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            VideoEntity ve = new VideoEntity();
+            ve.setTitle("韭菜盒子新做法，不发面不烫面");
+            ve.setName("大胃王");
+            ve.setDzCount(i * 2);
+            ve.setCollectCount(i * 4);
+            ve.setCommentCount(i * 6);
+            datas.add(ve);
+        }
+        VideoAdapter videoAdapter = new VideoAdapter(getActivity(), datas);
+        recyclerView.setAdapter(videoAdapter);
         return v;
     }
 }
