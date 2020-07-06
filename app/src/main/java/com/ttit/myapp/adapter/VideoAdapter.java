@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.ttit.myapp.R;
 import com.ttit.myapp.entity.VideoEntity;
 
@@ -40,11 +42,14 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolder vh = (ViewHolder) holder;
         VideoEntity videoEntity = datas.get(position);
-        vh.tvTitle.setText(videoEntity.getTitle());
-        vh.tvAuthor.setText(videoEntity.getName());
-        vh.tvDz.setText(String.valueOf(videoEntity.getDzCount()));
-        vh.tvComment.setText(String.valueOf(videoEntity.getCommentCount()));
-        vh.tvCollect.setText(String.valueOf(videoEntity.getCollectCount()));
+        vh.tvTitle.setText(videoEntity.getVtitle());
+        vh.tvAuthor.setText(videoEntity.getAuthor());
+        vh.tvDz.setText(String.valueOf(videoEntity.getLikeNum()));
+        vh.tvComment.setText(String.valueOf(videoEntity.getCommentNum()));
+        vh.tvCollect.setText(String.valueOf(videoEntity.getCollectNum()));
+
+        Picasso.with(mContext).load(videoEntity.getHeadurl()).into(vh.imgHeader);
+        Picasso.with(mContext).load(videoEntity.getCoverurl()).into(vh.imgCover);
     }
 
     @Override
@@ -58,6 +63,8 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         private TextView tvDz;
         private TextView tvComment;
         private TextView tvCollect;
+        private ImageView imgHeader;
+        private ImageView imgCover;
 
         public ViewHolder(@NonNull View view) {
             super(view);
@@ -66,6 +73,8 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvDz = view.findViewById(R.id.dz);
             tvComment = view.findViewById(R.id.comment);
             tvCollect = view.findViewById(R.id.collect);
+            imgHeader = view.findViewById(R.id.img_header);
+            imgCover = view.findViewById(R.id.img_cover);
         }
     }
 }

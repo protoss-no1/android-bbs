@@ -7,58 +7,87 @@ import java.io.Serializable;
  * @date: 2020-06-27
  **/
 public class VideoEntity implements Serializable {
-    private int id;
-    private String title;
-    private String name;
-    private int dzCount;
-    private int collectCount;
-    private int commentCount;
+    /**
+     * vid : 1
+     * vtitle : 青龙战甲搭配机动兵，P城上空肆意1V4
+     * author : 狙击手麦克
+     * coverurl : https://sf3-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/527d013205a74eb0a77202d7a9d5b511~tplv-crop-center:1041:582.jpg
+     * headurl : https://sf1-ttcdn-tos.pstatp.com/img/pgc-image/c783a73368fa4666b7842a635c63a8bf~360x360.image
+     * commentNum : 210
+     * likeNum : 23
+     * collectNum : 100
+     */
 
-    public int getId() {
-        return id;
+    private int vid;
+    private String vtitle;
+    private String author;
+    private String coverurl;
+    private String headurl;
+    private int commentNum;
+    private int likeNum;
+    private int collectNum;
+
+    public int getVid() {
+        return vid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setVid(int vid) {
+        this.vid = vid;
     }
 
-    public String getTitle() {
-        return title;
+    public String getVtitle() {
+        return vtitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setVtitle(String vtitle) {
+        this.vtitle = vtitle;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public int getDzCount() {
-        return dzCount;
+    public String getCoverurl() {
+        return coverurl;
     }
 
-    public void setDzCount(int dzCount) {
-        this.dzCount = dzCount;
+    public void setCoverurl(String coverurl) {
+        this.coverurl = coverurl;
     }
 
-    public int getCollectCount() {
-        return collectCount;
+    public String getHeadurl() {
+        return headurl;
     }
 
-    public void setCollectCount(int collectCount) {
-        this.collectCount = collectCount;
+    public void setHeadurl(String headurl) {
+        this.headurl = headurl;
     }
 
-    public int getCommentCount() {
-        return commentCount;
+    public int getCommentNum() {
+        return commentNum;
     }
 
-    public void setCommentCount(int commentCount) {
-        this.commentCount = commentCount;
+    public void setCommentNum(int commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public int getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(int likeNum) {
+        this.likeNum = likeNum;
+    }
+
+    public int getCollectNum() {
+        return collectNum;
+    }
+
+    public void setCollectNum(int collectNum) {
+        this.collectNum = collectNum;
     }
 }
