@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.ttit.myapp.R;
 import com.ttit.myapp.entity.VideoEntity;
+import com.ttit.myapp.view.CircleTransform;
 
 import java.util.List;
 
@@ -24,6 +25,14 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private Context mContext;
     private List<VideoEntity> datas;
+
+    public void setDatas(List<VideoEntity> datas) {
+        this.datas = datas;
+    }
+
+    public VideoAdapter(Context context) {
+        this.mContext = context;
+    }
 
     public VideoAdapter(Context context, List<VideoEntity> datas) {
         this.mContext = context;
@@ -48,13 +57,20 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         vh.tvComment.setText(String.valueOf(videoEntity.getCommentNum()));
         vh.tvCollect.setText(String.valueOf(videoEntity.getCollectNum()));
 
-        Picasso.with(mContext).load(videoEntity.getHeadurl()).into(vh.imgHeader);
+        Picasso.with(mContext)
+                .load(videoEntity.getHeadurl())
+                .transform(new CircleTransform())
+                .into(vh.imgHeader);
         Picasso.with(mContext).load(videoEntity.getCoverurl()).into(vh.imgCover);
     }
 
     @Override
     public int getItemCount() {
-        return datas.size();
+        if (datas != null && datas.size() > 0) {
+            return datas.size();
+        } else {
+            return 0;
+        }
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

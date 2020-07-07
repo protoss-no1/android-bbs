@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 80017
  Source Host           : localhost:3306
- Source Schema         : xgvideo
+ Source Schema         : myapp
 
  Target Server Type    : MySQL
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 27/06/2020 11:17:53
+ Date: 08/07/2020 00:33:02
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `channel`  (
   `channelId` int(10) NOT NULL AUTO_INCREMENT,
   `channel_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`channelId`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of channel
@@ -176,7 +176,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('RenrenScheduler', 'LAPTOP-FJHFR2EJ1593227578532', 1593227689186, 15000);
+INSERT INTO `qrtz_scheduler_state` VALUES ('RenrenScheduler', 'LAPTOP-FJHFR2EJ1594136536735', 1594139568671, 15000);
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -256,7 +256,7 @@ CREATE TABLE `qrtz_triggers`  (
 -- ----------------------------
 -- Records of qrtz_triggers
 -- ----------------------------
-INSERT INTO `qrtz_triggers` VALUES ('RenrenScheduler', 'TASK_1', 'DEFAULT', 'TASK_1', 'DEFAULT', NULL, 1593228600000, -1, 5, 'WAITING', 'CRON', 1584246824000, 0, NULL, 2, 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372002E696F2E72656E72656E2E6D6F64756C65732E6A6F622E656E746974792E5363686564756C654A6F62456E7469747900000000000000010200074C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C0006706172616D7371007E00094C000672656D61726B71007E00094C00067374617475737400134C6A6176612F6C616E672F496E74656765723B7870740008746573745461736B7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000170DC7532287874000E3020302F3330202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000000000000174000672656E72656E74000CE58F82E695B0E6B58BE8AF95737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C75657871007E0013000000007800);
+INSERT INTO `qrtz_triggers` VALUES ('RenrenScheduler', 'TASK_1', 'DEFAULT', 'TASK_1', 'DEFAULT', NULL, 1594141200000, 1594139400000, 5, 'WAITING', 'CRON', 1584246824000, 0, NULL, 2, 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372002E696F2E72656E72656E2E6D6F64756C65732E6A6F622E656E746974792E5363686564756C654A6F62456E7469747900000000000000010200074C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C0006706172616D7371007E00094C000672656D61726B71007E00094C00067374617475737400134C6A6176612F6C616E672F496E74656765723B7870740008746573745461736B7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000170DC7532287874000E3020302F3330202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000000000000174000672656E72656E74000CE58F82E695B0E6B58BE8AF95737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C75657871007E0013000000007800);
 
 -- ----------------------------
 -- Table structure for recommend
@@ -268,7 +268,7 @@ CREATE TABLE `recommend`  (
   `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '被关注人昵称\r\n',
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '被关注人状态: 1. 直播中 2.有更新\r\n',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of recommend
@@ -310,7 +310,7 @@ CREATE TABLE `schedule_job_log`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`log_id`) USING BTREE,
   INDEX `job_id`(`job_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of schedule_job_log
@@ -376,6 +376,27 @@ INSERT INTO `schedule_job_log` VALUES (58, 1, 'testTask', 'renren', 0, NULL, 1, 
 INSERT INTO `schedule_job_log` VALUES (59, 1, 'testTask', 'renren', 0, NULL, 7, '2020-06-26 23:00:00');
 INSERT INTO `schedule_job_log` VALUES (60, 1, 'testTask', 'renren', 0, NULL, 1, '2020-06-26 23:30:00');
 INSERT INTO `schedule_job_log` VALUES (61, 1, 'testTask', 'renren', 0, NULL, 24, '2020-06-27 00:00:00');
+INSERT INTO `schedule_job_log` VALUES (62, 1, 'testTask', 'renren', 0, NULL, 2, '2020-06-27 12:00:00');
+INSERT INTO `schedule_job_log` VALUES (63, 1, 'testTask', 'renren', 0, NULL, 1, '2020-06-27 12:30:00');
+INSERT INTO `schedule_job_log` VALUES (64, 1, 'testTask', 'renren', 0, NULL, 1, '2020-06-27 13:00:00');
+INSERT INTO `schedule_job_log` VALUES (65, 1, 'testTask', 'renren', 0, NULL, 2, '2020-06-27 13:30:00');
+INSERT INTO `schedule_job_log` VALUES (66, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-05 20:30:00');
+INSERT INTO `schedule_job_log` VALUES (67, 1, 'testTask', 'renren', 0, NULL, 2, '2020-07-05 21:00:00');
+INSERT INTO `schedule_job_log` VALUES (68, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-05 21:30:00');
+INSERT INTO `schedule_job_log` VALUES (69, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-05 22:00:00');
+INSERT INTO `schedule_job_log` VALUES (70, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-05 22:30:00');
+INSERT INTO `schedule_job_log` VALUES (71, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-06 21:30:00');
+INSERT INTO `schedule_job_log` VALUES (72, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-06 22:00:00');
+INSERT INTO `schedule_job_log` VALUES (73, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-06 23:00:00');
+INSERT INTO `schedule_job_log` VALUES (74, 1, 'testTask', 'renren', 0, NULL, 0, '2020-07-06 23:30:00');
+INSERT INTO `schedule_job_log` VALUES (75, 1, 'testTask', 'renren', 0, NULL, 7, '2020-07-07 00:00:00');
+INSERT INTO `schedule_job_log` VALUES (76, 1, 'testTask', 'renren', 0, NULL, 2, '2020-07-07 00:30:00');
+INSERT INTO `schedule_job_log` VALUES (77, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-07 22:00:00');
+INSERT INTO `schedule_job_log` VALUES (78, 1, 'testTask', 'renren', 0, NULL, 2, '2020-07-07 22:30:00');
+INSERT INTO `schedule_job_log` VALUES (79, 1, 'testTask', 'renren', 0, NULL, 2, '2020-07-07 23:00:00');
+INSERT INTO `schedule_job_log` VALUES (80, 1, 'testTask', 'renren', 0, NULL, 0, '2020-07-07 23:30:00');
+INSERT INTO `schedule_job_log` VALUES (81, 1, 'testTask', 'renren', 0, NULL, 7, '2020-07-08 00:00:00');
+INSERT INTO `schedule_job_log` VALUES (82, 1, 'testTask', 'renren', 0, NULL, 2, '2020-07-08 00:30:00');
 
 -- ----------------------------
 -- Table structure for sys_captcha
@@ -589,33 +610,33 @@ INSERT INTO `tb_user` VALUES (6, 'root', 'root', '8d969eef6ecad3c29a3a629280e686
 INSERT INTO `tb_user` VALUES (8, 'admin', 'admin', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '2020-06-14 13:46:40');
 
 -- ----------------------------
--- Table structure for video
+-- Table structure for video_list
 -- ----------------------------
-DROP TABLE IF EXISTS `video`;
-CREATE TABLE `video`  (
+DROP TABLE IF EXISTS `video_list`;
+CREATE TABLE `video_list`  (
   `vid` int(11) NOT NULL AUTO_INCREMENT COMMENT '视频id\r\n',
   `vtitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '视频标题\r\n',
   `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '作者姓名\r\n',
-  `authorintro` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '作者简介\r\n',
+  `coverUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '封面图',
   `headurl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '作者头像url\r\n',
   `comment_num` int(11) NULL DEFAULT NULL COMMENT '用户评论数',
   `like_num` int(11) NULL DEFAULT NULL COMMENT '点赞数',
+  `collect_num` int(11) NULL DEFAULT NULL COMMENT '收藏数',
   PRIMARY KEY (`vid`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of video
+-- Records of video_list
 -- ----------------------------
-INSERT INTO `video` VALUES (1, '给诋毁者当头一棒, 耿爽毫不客气地抛出一句话, 擢到美官员的痛处', '长江新闻号', '湖北卫视《长江新闻号》官方账号', 'http://img2.woyaogexing.com/2018/10/28/f625cd8f182d4dc1949a42e30af79bd7%21400x400.jpeg', 30, 1320);
-INSERT INTO `video` VALUES (2, '买菜西施回来了,阿峰提着两大麻袋海货上门,要找西施谈大工程', '渔人阿峰', '三农达人团成员 知名三农领域创作者', 'http://cdn.duitang.com/uploads/item/201608/25/20160825214118_nMzNT.thumb.700_0.jpeg', 2015, 16000);
-INSERT INTO `video` VALUES (3, '持股1.36%！比尔盖茨宣布离开微软董事会：未来将专注做慈善', '\r\n老板说的对', '优质财经领域创作者', 'http://img.tukexw.com/img/9f716c744beba755.jpg', 100, 36);
-INSERT INTO `video` VALUES (4, '南洋小厨：炸虾饼做法，大人小孩都爱吃，学会了就不用点外卖了', '南洋小厨', '美食领域创作者', 'http://img1.touxiang.cn/uploads/20121119/19-014855_27.jpg', 200, 263);
-INSERT INTO `video` VALUES (5, '华农兄弟：兄弟有事，帮他放一下牛，这些牛看起来很漂亮哦', '华农兄弟', '三农达人团成员 知名三农领域创作者 ', 'http://www.17qq.com/img_qqtouxiang/12056504.jpeg', 5020, 6232);
-INSERT INTO `video` VALUES (6, '罗马响起中国国歌 意大利民众高喊“谢谢中国”', '\r\n央视新闻', '中央电视台新闻中心官方账号', 'http://www.touxiang.cn/uploads/20130220/20-050719_114.jpg', 452, 300);
-INSERT INTO `video` VALUES (7, '浓缩的都是精华,看鼓浪屿给冬子留下了哪些第一印象?', '\r\n新视野号出发', '优质旅游领域创作者', 'http://tupian.qqw21.com/article/UploadPic/2020-2/202022018535866012.jpg', 23, 55);
-INSERT INTO `video` VALUES (8, '查阅台军公开资料被污涉密 国民党团罕见力挺吴斯怀', '\r\n海峡卫视今日海峡', '海峡卫视今日海峡官方账号', 'http://img4.imgtn.bdimg.com/it/u=553010384,1333702880&fm=26&gp=0.jpg', 100, 230);
-INSERT INTO `video` VALUES (9, '有才！男子用食材拍影视经典剪影照走红网络：土豆面粉变“仙境”', '\r\n中国国情', '中国网国情频道官方账号', 'http://www.17qq.com/img_qqtouxiang/74625497.jpeg', 85, 12);
-INSERT INTO `video` VALUES (10, '硬核又可爱！城管用无人机喊话折花者', '\r\n人民日报', '人民日报官方账号', 'http://img.wxcha.com/file/201801/23/775e8f617e.jpg', 896, 1000);
-INSERT INTO `video` VALUES (11, '挖掘机砌的砖墙被推倒了，是谁干的？是工程车吗？早教益智动画\r\n萌萌的小剧场', '\r\n萌萌的小剧场', '优质儿童领域创作者', 'http://pic1.zhimg.com/v2-17dc8100ca03ebfa03d2ea49881cd532_250x0.jpg', 10, 20);
+INSERT INTO `video_list` VALUES (1, '青龙战甲搭配机动兵，P城上空肆意1V4', '狙击手麦克', 'https://sf3-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/527d013205a74eb0a77202d7a9d5b511~tplv-crop-center:1041:582.jpg', 'https://sf1-ttcdn-tos.pstatp.com/img/pgc-image/c783a73368fa4666b7842a635c63a8bf~360x360.image', 210, 23, 100);
+INSERT INTO `video_list` VALUES (2, '【仁王2】视频攻略 2-3 虚幻魔城', '黑桐谷歌', 'https://lf1-xgcdn-tos.pstatp.com/img/tos-cn-p-0000/9ff7fe6c89e44ca3a22aad5744e569e3~tplv-crop-center:1041:582.jpg', 'https://sf6-ttcdn-tos.pstatp.com/img/mosaic-legacy/8110/752553978~360x360.image', 1300, 500, 120);
+INSERT INTO `video_list` VALUES (3, '最猛暴击吕布教学，这才是战神该有的样子', '小凡解说游戏', 'https://sf1-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/83cc11d5e26047c6b0ead149f41a8266~tplv-crop-center:1041:582.jpg', 'https://p3.pstatp.com/large/a14a000405f16e51842f', 10, 19, 5);
+INSERT INTO `video_list` VALUES (4, '拳皇14：小孩输掉一分，印尼选手得意忘形', 'E游未尽小E', 'https://sf1-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/b9553b7a28d94f27a7115157797b52ff~tplv-crop-center:1041:582.jpg', 'https://sf3-ttcdn-tos.pstatp.com/img/pgc-image/f6b840d23f9e465bb5ac9e570b28321d~360x360.image', 22, 180, 963);
+INSERT INTO `video_list` VALUES (5, '阿远花210块买了条20斤的鲅鱼', '食味阿远', 'https://lf6-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/b821f00833b54e25ac941c7d267c2b75~tplv-crop-center:1041:582.jpg', 'https://p9.pstatp.com/large/6edc0000758b2daaa6cc', 36, 3, 56);
+INSERT INTO `video_list` VALUES (6, '10斤用新鲜牛腿肉分享', '美食作家王刚', 'https://sf3-xgcdn-tos.pstatp.com/img/p1901/d9d5ae15079a8073f5cdb04b6a80777a~tplv-crop-center:1041:582.jpg', 'https://sf3-ttcdn-tos.pstatp.com/img/mosaic-legacy/da860012437af2fd24c2~360x360.image', 96, 700, 89);
+INSERT INTO `video_list` VALUES (7, '面条这样吃才叫爽，放两斤花甲一拌', '山药视频', 'https://lf3-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/51109f43de0346f68b7fd93103658aa4~tplv-crop-center:1041:582.jpg', 'https://p1.pstatp.com/large/719f0015d12364d07c5b', 9, 56, 123);
+INSERT INTO `video_list` VALUES (8, '2320买2只蓝色龙虾，一只清蒸，一只刺身', '半吨先生', 'https://sf3-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/5ecedb083288435cbbf51ef04723d991~tplv-crop-center:1041:582.jpg', 'https://sf1-ttcdn-tos.pstatp.com/img/mosaic-legacy/dae9000ee0a875804aae~360x360.image', 98, 546, 23);
+INSERT INTO `video_list` VALUES (9, '122块钱买了一大堆海螺，想试试', '韩小浪', 'https://lf6-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/28b99fcd52bf4e45a7f4a28ab2f21685~tplv-crop-center:1041:582.jpg', 'https://sf6-ttcdn-tos.pstatp.com/img/mosaic-legacy/b77400114e944ff697e4~360x360.image', 156, 56, 856);
+INSERT INTO `video_list` VALUES (10, '10块钱的大鲍鱼随便搞50个来烧烤', '阿壮锅', 'https://sf6-xgcdn-tos.pstatp.com/img/tos-cn-i-0004/edcc153551794b67a2de2683ff8b0ee2~tplv-crop-center:1041:582.jpg', 'https://sf3-ttcdn-tos.pstatp.com/img/pgc-image/7cbcfbb82fa142058fd45549d3b63a5b~360x360.image', 85, 4566, 100);
 
 SET FOREIGN_KEY_CHECKS = 1;
