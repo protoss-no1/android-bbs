@@ -4,15 +4,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dueeeke.videocontroller.component.PrepareView;
 import com.squareup.picasso.Picasso;
 import com.ttit.myapp.R;
 import com.ttit.myapp.entity.VideoEntity;
+import com.ttit.myapp.listener.OnItemChildClickListener;
+import com.ttit.myapp.listener.OnItemClickListener;
 import com.ttit.myapp.view.CircleTransform;
 
 import java.util.List;
@@ -29,6 +33,10 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void setDatas(List<VideoEntity> datas) {
         this.datas = datas;
     }
+
+    private OnItemChildClickListener mOnItemChildClickListener;
+
+    private OnItemClickListener mOnItemClickListener;
 
     public VideoAdapter(Context context) {
         this.mContext = context;
@@ -61,7 +69,11 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 .load(videoEntity.getHeadurl())
                 .transform(new CircleTransform())
                 .into(vh.imgHeader);
-        Picasso.with(mContext).load(videoEntity.getCoverurl()).into(vh.imgCover);
+
+        Picasso.with(mContext)
+                .load(videoEntity.getCoverurl())
+                .into(vh.mThumb);
+        vh.mPosition = position;
     }
 
     @Override
@@ -73,14 +85,17 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvTitle;
         private TextView tvAuthor;
         private TextView tvDz;
         private TextView tvComment;
         private TextView tvCollect;
         private ImageView imgHeader;
-        private ImageView imgCover;
+        public ImageView mThumb;
+        public PrepareView mPrepareView;
+        public FrameLayout mPlayerContainer;
+        public int mPosition;
 
         public ViewHolder(@NonNull View view) {
             super(view);
@@ -90,7 +105,40 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvComment = view.findViewById(R.id.comment);
             tvCollect = view.findViewById(R.id.collect);
             imgHeader = view.findViewById(R.id.img_header);
-            imgCover = view.findViewById(R.id.img_cover);
+            mPlayerContainer = view.findViewById(R.id.player_container);
+            mPrepareView = view.findViewById(R.id.prepare_view);
+            mThumb = mPrepareView.findViewById(R.id.thumb);
+            if (mOnItemChildClickListener != null) {
+                mPlayerContainer.setOnClickListener(this);
+            }
+            if (mOnItemClickListener != null) {
+                view.setOnClickListener(this);
+            }
+            //通过tag将ViewHolder和itemView绑定
+            view.setTag(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.player_container) {
+                if (mOnItemChildClickListener != null) {
+                    mOnItemChildClickListener.onItemChildClick(mPosition);
+                }
+            } else {
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(mPosition);
+                }
+            }
+
+        }
+    }
+
+
+    public void setOnItemChildClickListener(OnItemChildClickListener onItemChildClickListener) {
+        mOnItemChildClickListener = onItemChildClickListener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
     }
 }
