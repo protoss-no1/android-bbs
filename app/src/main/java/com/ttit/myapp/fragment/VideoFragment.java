@@ -2,6 +2,8 @@ package com.ttit.myapp.fragment;
 
 
 import android.content.pm.ActivityInfo;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -39,7 +41,7 @@ import java.util.List;
 
 public class VideoFragment extends BaseFragment implements OnItemChildClickListener {
 
-    private String title;
+    private int categoryId;
     private RecyclerView recyclerView;
     private RefreshLayout refreshLayout;
     private int pageNum = 1;
@@ -61,12 +63,25 @@ public class VideoFragment extends BaseFragment implements OnItemChildClickListe
      */
     protected int mLastPos = mCurPos;
 
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    videoAdapter.setDatas(datas);
+                    videoAdapter.notifyDataSetChanged();
+                    break;
+            }
+        }
+    };
+
     public VideoFragment() {
     }
 
-    public static VideoFragment newInstance(String title) {
+    public static VideoFragment newInstance(int categoryId) {
         VideoFragment fragment = new VideoFragment();
-        fragment.title = title;
+        fragment.categoryId = categoryId;
         return fragment;
     }
 
@@ -238,38 +253,33 @@ public class VideoFragment extends BaseFragment implements OnItemChildClickListe
             params.put("token", token);
             params.put("page", pageNum);
             params.put("limit", ApiConfig.PAGE_SIZE);
-            Api.config(ApiConfig.VIDEO_LIST, params).getRequest(new TtitCallback() {
+            params.put("categoryId", categoryId);
+            Api.config(ApiConfig.VIDEO_LIST_BY_CATEGORY, params).getRequest(new TtitCallback() {
                 @Override
                 public void onSuccess(final String res) {
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                    if (isRefresh) {
+                        refreshLayout.finishRefresh(true);
+                    } else {
+                        refreshLayout.finishLoadMore(true);
+                    }
+                    VideoListResponse response = new Gson().fromJson(res, VideoListResponse.class);
+                    if (response != null && response.getCode() == 0) {
+                        List<VideoEntity> list = response.getPage().getList();
+                        if (list != null && list.size() > 0) {
                             if (isRefresh) {
-                                refreshLayout.finishRefresh(true);
+                                datas = list;
                             } else {
-                                refreshLayout.finishLoadMore(true);
+                                datas.addAll(list);
                             }
-                            VideoListResponse response = new Gson().fromJson(res, VideoListResponse.class);
-                            if (response != null && response.getCode() == 0) {
-                                List<VideoEntity> list = response.getPage().getList();
-                                if (list != null && list.size() > 0) {
-                                    if (isRefresh) {
-                                        datas = list;
-                                    } else {
-                                        datas.addAll(list);
-                                    }
-                                    videoAdapter.setDatas(datas);
-                                    videoAdapter.notifyDataSetChanged();
-                                } else {
-                                    if (isRefresh) {
-                                        showToast("暂时无数据");
-                                    } else {
-                                        showToast("没有更多数据");
-                                    }
-                                }
+                            mHandler.sendEmptyMessage(0);
+                        } else {
+                            if (isRefresh) {
+                                showToastSync("暂时无数据");
+                            } else {
+                                showToastSync("没有更多数据");
                             }
                         }
-                    });
+                    }
                 }
 
                 @Override
