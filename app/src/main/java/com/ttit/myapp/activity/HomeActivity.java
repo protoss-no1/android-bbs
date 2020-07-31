@@ -9,15 +9,15 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.ttit.myapp.R;
 import com.ttit.myapp.adapter.MyPagerAdapter;
 import com.ttit.myapp.entity.TabEntity;
-import com.ttit.myapp.fragment.CollectFragment;
 import com.ttit.myapp.fragment.HomeFragment;
 import com.ttit.myapp.fragment.MyFragment;
+import com.ttit.myapp.fragment.NewsFragment;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends BaseActivity {
 
-    private String[] mTitles = {"首页", "收藏", "我的"};
+    private String[] mTitles = {"首页", "资讯", "我的"};
     private int[] mIconUnselectIds = {
             R.mipmap.home_unselect, R.mipmap.collect_unselect,
             R.mipmap.my_unselect};
@@ -43,7 +43,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void initData() {
         mFragments.add(HomeFragment.newInstance());
-        mFragments.add(CollectFragment.newInstance());
+        mFragments.add(NewsFragment.newInstance());
         mFragments.add(MyFragment.newInstance());
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
