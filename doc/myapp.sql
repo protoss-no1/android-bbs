@@ -11,11 +11,67 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 20/07/2020 00:11:32
+ Date: 01/08/2020 16:01:55
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for news
+-- ----------------------------
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news`  (
+  `news_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '资讯id',
+  `news_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '资讯标题',
+  `author_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '作者名',
+  `header_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '头像url',
+  `comment_count` int(10) NULL DEFAULT NULL COMMENT '评论数',
+  `release_date` datetime(0) NULL DEFAULT NULL COMMENT '发布日期',
+  `type` int(1) NULL DEFAULT NULL COMMENT '资讯显示类型',
+  PRIMARY KEY (`news_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of news
+-- ----------------------------
+INSERT INTO `news` VALUES (1, '《忍者蛙》发售日公布 已上架Steam、支持简中', '3DMGAME', 'https://p9.pstatp.com/thumb/6eed00026c4eac713a44', 3, '2020-07-31 22:23:00', 1);
+INSERT INTO `news` VALUES (2, '外媒爆料：育碧“阿瓦隆”项目胎死腹中，只因为他不喜欢奇幻游戏', '爱游戏的萌博士', 'https://p3.pstatp.com/thumb/43310001daafa9723ddf', 1, '2020-07-31 21:01:17', 2);
+INSERT INTO `news` VALUES (3, '索尼公布Ready for PlayStation 5电视阵容', '游戏时光VGtime', 'https://p1.pstatp.com/thumb/dc0c0004c450216ab2f3', 6, '2020-07-30 13:11:32', 3);
+INSERT INTO `news` VALUES (4, '一部不受关注的互动电影佳作——解构《暴雨》', '瑾瑜游乐说', 'https://sf3-ttcdn-tos.pstatp.com/img/pgc-image/e200b9de317b4e73af24299ea063bec2~120x256.image', 12, '2020-07-30 13:11:32', 3);
+INSERT INTO `news` VALUES (5, '《光环：无限》官方Q&A 无充值战利品，画质优化中', '聚玩社官方', 'https://sf6-ttcdn-tos.pstatp.com/img/pgc-image/2bfe5f2e082e415cb92a03cfcfcfead8~120x256.image', 4, '2020-08-01 08:22:47', 2);
+INSERT INTO `news` VALUES (6, '2020小编个人力推的耐玩的养老游戏', '游戏我看看', 'https://sf3-ttcdn-tos.pstatp.com/img/mosaic-legacy/dc0d0001fca5e747f267~120x256.image', 7, '2020-07-30 12:48:37', 1);
+INSERT INTO `news` VALUES (7, 'NBA复赛赛况：开拓者加时擒灰熊，太阳胜奇才，魔术“主场”破网', '头条专题', 'https://sf1-ttcdn-tos.pstatp.com/img/mosaic-legacy/ffbc0000ad1e717b76a6~120x256.image', 23, '2020-08-01 06:49:44', 1);
+INSERT INTO `news` VALUES (8, 'NBA最有含金量总冠军？奥拉朱旺95年4次以下克上！无冠军超过2次', '网罗篮球', 'https://sf6-ttcdn-tos.pstatp.com/img/pgc-image/9f11654ff6184afd8941bcf7ccd3c5dd~120x256.image', 45, '2020-05-23 14:08:09', 2);
+
+-- ----------------------------
+-- Table structure for news_thumb
+-- ----------------------------
+DROP TABLE IF EXISTS `news_thumb`;
+CREATE TABLE `news_thumb`  (
+  `thumb_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '缩略图id',
+  `thumb_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '缩略图url',
+  `news_id` int(10) NULL DEFAULT NULL COMMENT '资讯id',
+  PRIMARY KEY (`thumb_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of news_thumb
+-- ----------------------------
+INSERT INTO `news_thumb` VALUES (1, 'http://p1-tt.byteimg.com/large/pgc-image/S6KR5958Y5X2Qt?from=pc', 1);
+INSERT INTO `news_thumb` VALUES (2, 'http://p1-tt.byteimg.com/large/pgc-image/714415d37865444ca2bef51eb1706cda?from=pc', 2);
+INSERT INTO `news_thumb` VALUES (3, 'http://p1-tt.byteimg.com/large/pgc-image/33b9831739764bdb8a157efce048ec85?from=pc', 2);
+INSERT INTO `news_thumb` VALUES (4, 'http://p3-tt.byteimg.com/large/pgc-image/c8a4e737b54d41c1a84722fc1c6d191d?from=pc', 2);
+INSERT INTO `news_thumb` VALUES (5, 'http://p6-tt.byteimg.com/large/pgc-image/S6CLixgC4HSrXD?from=pc', 3);
+INSERT INTO `news_thumb` VALUES (6, 'http://p6-tt.byteimg.com/large/pgc-image/17fe1be328e149c9aa400dcf8a8c4dd6?from=pc', 4);
+INSERT INTO `news_thumb` VALUES (7, 'http://p1-tt.byteimg.com/large/pgc-image/a456c50fff344122b1b20ed99026c3f8?from=pc', 5);
+INSERT INTO `news_thumb` VALUES (8, 'http://p3-tt.byteimg.com/large/pgc-image/02973348d57d4dfba2d001f82caa3fcc?from=pc', 5);
+INSERT INTO `news_thumb` VALUES (9, 'http://p1-tt.byteimg.com/large/pgc-image/7add3e2a4f754d0baccc607cde132b5f?from=pc', 5);
+INSERT INTO `news_thumb` VALUES (10, 'http://p1-tt.byteimg.com/large/pgc-image/b957bfacdd134aa9a1a7e47d40d1be4b?from=pc', 6);
+INSERT INTO `news_thumb` VALUES (11, 'https://p3.pstatp.com/list/190x124/pgc-image/2b5f07505b67498e83e2faa32d637e5c', 7);
+INSERT INTO `news_thumb` VALUES (12, 'http://p6-tt.byteimg.com/large/pgc-image/36357b0bc5e54b0783c7ebe0bf9aefbd?from=pc', 8);
+INSERT INTO `news_thumb` VALUES (13, 'http://p1-tt.byteimg.com/large/pgc-image/d8c92b02eeb6490084c020c76c876c7a?from=pc', 8);
+INSERT INTO `news_thumb` VALUES (14, 'http://p3-tt.byteimg.com/large/pgc-image/7dfc0ccdd0ba4b4093fa5663891b5780?from=pc', 8);
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers
@@ -154,7 +210,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('RenrenScheduler', 'LAPTOP-FJHFR2EJ1595165864466', 1595175091568, 15000);
+INSERT INTO `qrtz_scheduler_state` VALUES ('RenrenScheduler', 'LAPTOP-FJHFR2EJ1596264803924', 1596268669688, 15000);
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -234,7 +290,7 @@ CREATE TABLE `qrtz_triggers`  (
 -- ----------------------------
 -- Records of qrtz_triggers
 -- ----------------------------
-INSERT INTO `qrtz_triggers` VALUES ('RenrenScheduler', 'TASK_1', 'DEFAULT', 'TASK_1', 'DEFAULT', NULL, 1595176200000, 1595174400000, 5, 'WAITING', 'CRON', 1584246824000, 0, NULL, 2, 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372002E696F2E72656E72656E2E6D6F64756C65732E6A6F622E656E746974792E5363686564756C654A6F62456E7469747900000000000000010200074C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C0006706172616D7371007E00094C000672656D61726B71007E00094C00067374617475737400134C6A6176612F6C616E672F496E74656765723B7870740008746573745461736B7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000170DC7532287874000E3020302F3330202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000000000000174000672656E72656E74000CE58F82E695B0E6B58BE8AF95737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C75657871007E0013000000007800);
+INSERT INTO `qrtz_triggers` VALUES ('RenrenScheduler', 'TASK_1', 'DEFAULT', 'TASK_1', 'DEFAULT', NULL, 1596268800000, 1596267000000, 5, 'WAITING', 'CRON', 1584246824000, 0, NULL, 2, 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372002E696F2E72656E72656E2E6D6F64756C65732E6A6F622E656E746974792E5363686564756C654A6F62456E7469747900000000000000010200074C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C0006706172616D7371007E00094C000672656D61726B71007E00094C00067374617475737400134C6A6176612F6C616E672F496E74656765723B7870740008746573745461736B7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000170DC7532287874000E3020302F3330202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000000000000174000672656E72656E74000CE58F82E695B0E6B58BE8AF95737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C75657871007E0013000000007800);
 
 -- ----------------------------
 -- Table structure for schedule_job
@@ -271,7 +327,7 @@ CREATE TABLE `schedule_job_log`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`log_id`) USING BTREE,
   INDEX `job_id`(`job_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 91 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of schedule_job_log
@@ -386,6 +442,20 @@ INSERT INTO `schedule_job_log` VALUES (107, 1, 'testTask', 'renren', 0, NULL, 0,
 INSERT INTO `schedule_job_log` VALUES (108, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-19 23:00:00');
 INSERT INTO `schedule_job_log` VALUES (109, 1, 'testTask', 'renren', 0, NULL, 1, '2020-07-19 23:30:00');
 INSERT INTO `schedule_job_log` VALUES (110, 1, 'testTask', 'renren', 0, NULL, 33, '2020-07-20 00:00:00');
+INSERT INTO `schedule_job_log` VALUES (111, 1, 'testTask', 'renren', 0, NULL, 2, '2020-07-29 16:00:00');
+INSERT INTO `schedule_job_log` VALUES (112, 1, 'testTask', 'renren', 0, NULL, 2, '2020-08-01 00:30:00');
+INSERT INTO `schedule_job_log` VALUES (113, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 01:00:00');
+INSERT INTO `schedule_job_log` VALUES (114, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 01:30:00');
+INSERT INTO `schedule_job_log` VALUES (115, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-01 11:00:00');
+INSERT INTO `schedule_job_log` VALUES (116, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 11:30:00');
+INSERT INTO `schedule_job_log` VALUES (117, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 12:00:00');
+INSERT INTO `schedule_job_log` VALUES (118, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-01 12:30:00');
+INSERT INTO `schedule_job_log` VALUES (119, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 13:00:00');
+INSERT INTO `schedule_job_log` VALUES (120, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-01 13:30:00');
+INSERT INTO `schedule_job_log` VALUES (121, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-01 14:00:00');
+INSERT INTO `schedule_job_log` VALUES (122, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 14:30:00');
+INSERT INTO `schedule_job_log` VALUES (123, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-01 15:00:00');
+INSERT INTO `schedule_job_log` VALUES (124, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 15:30:00');
 
 -- ----------------------------
 -- Table structure for sys_captcha
@@ -402,9 +472,11 @@ CREATE TABLE `sys_captcha`  (
 -- Records of sys_captcha
 -- ----------------------------
 INSERT INTO `sys_captcha` VALUES ('3de67b53-d287-41e6-85fa-5d9432e9722b', '7ny73', '2020-03-15 19:36:51');
+INSERT INTO `sys_captcha` VALUES ('a5409fe3-2a92-47cd-84e7-2845dad38591', 'benn5', '2020-08-01 13:18:24');
 INSERT INTO `sys_captcha` VALUES ('b038fd02-96d8-42aa-8466-f758178b8217', '2cd82', '2020-03-15 19:36:52');
 INSERT INTO `sys_captcha` VALUES ('d20ed40e-2c9b-4c27-88c6-a034af18ec7b', '7nna2', '2020-03-15 19:36:45');
 INSERT INTO `sys_captcha` VALUES ('dfd3378c-58c3-4f62-8f01-7c5e26aab62c', 'eed52', '2020-03-15 19:36:50');
+INSERT INTO `sys_captcha` VALUES ('e67fc8a1-29e3-46cc-8613-202d56e3888b', 'wmdn6', '2020-08-01 13:16:03');
 
 -- ----------------------------
 -- Table structure for sys_config
@@ -439,7 +511,7 @@ CREATE TABLE `sys_log`  (
   `ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'IP地址',
   `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_log
@@ -464,6 +536,11 @@ INSERT INTO `sys_log` VALUES (17, 'admin', '保存用户', 'io.renren.modules.sy
 INSERT INTO `sys_log` VALUES (18, 'admin', '修改用户', 'io.renren.modules.sys.controller.SysUserController.update()', '[{\"userId\":1,\"username\":\"admin\",\"salt\":\"YzcmCZNvbXocrsz9dm8e\",\"email\":\"root@renren.io\",\"mobile\":\"13612345678\",\"status\":1,\"roleIdList\":[2],\"createUserId\":1}]', 7, '0:0:0:0:0:0:0:1', '2020-07-19 18:03:51');
 INSERT INTO `sys_log` VALUES (19, 'admin', '修改用户', 'io.renren.modules.sys.controller.SysUserController.update()', '[{\"userId\":4,\"username\":\"root\",\"salt\":\"aH1XLPH0wBuZq2kl2Pas\",\"email\":\"abc@123.com\",\"mobile\":\"18371458987\",\"status\":1,\"roleIdList\":[1],\"createUserId\":1}]', 8, '0:0:0:0:0:0:0:1', '2020-07-19 18:03:57');
 INSERT INTO `sys_log` VALUES (20, 'admin', '修改用户', 'io.renren.modules.sys.controller.SysUserController.update()', '[{\"userId\":4,\"username\":\"user\",\"salt\":\"aH1XLPH0wBuZq2kl2Pas\",\"email\":\"abc@123.com\",\"mobile\":\"18371458987\",\"status\":1,\"roleIdList\":[1],\"createUserId\":1}]', 18, '0:0:0:0:0:0:0:1', '2020-07-19 18:04:06');
+INSERT INTO `sys_log` VALUES (21, 'admin', '保存菜单', 'io.renren.modules.sys.controller.SysMenuController.save()', '[{\"menuId\":42,\"parentId\":31,\"name\":\"资讯列表\",\"url\":\"app/news\",\"type\":1,\"icon\":\"editor\",\"orderNum\":0}]', 19, '0:0:0:0:0:0:0:1', '2020-08-01 13:16:32');
+INSERT INTO `sys_log` VALUES (22, 'admin', '保存菜单', 'io.renren.modules.sys.controller.SysMenuController.save()', '[{\"menuId\":43,\"parentId\":42,\"name\":\"查看\",\"url\":\"\",\"perms\":\"app:news:list,app:news:info\",\"type\":2,\"icon\":\"\",\"orderNum\":0}]', 14, '0:0:0:0:0:0:0:1', '2020-08-01 13:17:29');
+INSERT INTO `sys_log` VALUES (23, 'admin', '保存菜单', 'io.renren.modules.sys.controller.SysMenuController.save()', '[{\"menuId\":44,\"parentId\":42,\"name\":\"新增\",\"url\":\"\",\"perms\":\"app:news:save\",\"type\":2,\"icon\":\"\",\"orderNum\":0}]', 4, '0:0:0:0:0:0:0:1', '2020-08-01 13:17:57');
+INSERT INTO `sys_log` VALUES (24, 'admin', '保存菜单', 'io.renren.modules.sys.controller.SysMenuController.save()', '[{\"menuId\":45,\"parentId\":42,\"name\":\"修改\",\"url\":\"\",\"perms\":\"app:news:update\",\"type\":2,\"icon\":\"\",\"orderNum\":0}]', 13, '0:0:0:0:0:0:0:1', '2020-08-01 13:18:11');
+INSERT INTO `sys_log` VALUES (25, 'admin', '保存菜单', 'io.renren.modules.sys.controller.SysMenuController.save()', '[{\"menuId\":46,\"parentId\":42,\"name\":\"删除\",\"url\":\"\",\"perms\":\"app:news:delete\",\"type\":2,\"icon\":\"\",\"orderNum\":0}]', 15, '0:0:0:0:0:0:0:1', '2020-08-01 13:18:25');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -479,7 +556,7 @@ CREATE TABLE `sys_menu`  (
   `icon` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '菜单图标',
   `order_num` int(11) NULL DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -524,6 +601,11 @@ INSERT INTO `sys_menu` VALUES (38, 37, '查看', '', 'app:videocategory:list,app
 INSERT INTO `sys_menu` VALUES (39, 37, '新增', '', 'app:videocategory:save', 2, '', 0);
 INSERT INTO `sys_menu` VALUES (40, 37, '修改', '', 'app:videocategory:update', 2, '', 0);
 INSERT INTO `sys_menu` VALUES (41, 37, '删除', '', 'app:videocategory:delete', 2, '', 0);
+INSERT INTO `sys_menu` VALUES (42, 31, '资讯列表', 'app/news', NULL, 1, 'editor', 0);
+INSERT INTO `sys_menu` VALUES (43, 42, '查看', '', 'app:news:list,app:news:info', 2, '', 0);
+INSERT INTO `sys_menu` VALUES (44, 42, '新增', '', 'app:news:save', 2, '', 0);
+INSERT INTO `sys_menu` VALUES (45, 42, '修改', '', 'app:news:update', 2, '', 0);
+INSERT INTO `sys_menu` VALUES (46, 42, '删除', '', 'app:news:delete', 2, '', 0);
 
 -- ----------------------------
 -- Table structure for sys_oss
@@ -547,7 +629,7 @@ CREATE TABLE `sys_role`  (
   `create_user_id` bigint(20) NULL DEFAULT NULL COMMENT '创建者ID',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role
@@ -565,7 +647,7 @@ CREATE TABLE `sys_role_menu`  (
   `role_id` bigint(20) NULL DEFAULT NULL COMMENT '角色ID',
   `menu_id` bigint(20) NULL DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色与菜单对应关系' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色与菜单对应关系' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -670,7 +752,7 @@ CREATE TABLE `sys_user`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`user_id`) USING BTREE,
   UNIQUE INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统用户' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统用户' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
@@ -688,7 +770,7 @@ CREATE TABLE `sys_user_role`  (
   `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(20) NULL DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户与角色对应关系' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户与角色对应关系' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user_role
@@ -713,7 +795,7 @@ CREATE TABLE `sys_user_token`  (
 -- ----------------------------
 -- Records of sys_user_token
 -- ----------------------------
-INSERT INTO `sys_user_token` VALUES (1, 'ff3c5c8416193df35debdb4bdfc8b15d', '2020-07-20 08:55:55', '2020-07-19 20:55:55');
+INSERT INTO `sys_user_token` VALUES (1, '274592f45960f80a4cb78ac8051cd21d', '2020-08-02 01:11:41', '2020-08-01 13:11:41');
 INSERT INTO `sys_user_token` VALUES (4, '958fb8a2b949ec2302de99500ba6bb52', '2020-07-20 06:04:27', '2020-07-19 18:04:27');
 INSERT INTO `sys_user_token` VALUES (5, '2e59fc3957b7020068919af1dd21a225', '2020-07-20 06:08:08', '2020-07-19 18:08:08');
 
@@ -729,7 +811,7 @@ CREATE TABLE `tb_user`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`user_id`) USING BTREE,
   UNIQUE INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_user
@@ -746,7 +828,7 @@ CREATE TABLE `video_category`  (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of video_category
@@ -778,7 +860,7 @@ CREATE TABLE `video_list`  (
   `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
   `category_id` int(11) NULL DEFAULT NULL COMMENT '视频分类ID',
   PRIMARY KEY (`vid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of video_list
