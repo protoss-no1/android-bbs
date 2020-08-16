@@ -1,5 +1,6 @@
 package com.ttit.myapp.fragment;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
@@ -13,6 +14,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.ttit.myapp.R;
 import com.ttit.myapp.activity.LoginActivity;
+import com.ttit.myapp.activity.WebActivity;
 import com.ttit.myapp.adapter.NewsAdapter;
 import com.ttit.myapp.api.Api;
 import com.ttit.myapp.api.ApiConfig;
@@ -21,6 +23,7 @@ import com.ttit.myapp.entity.NewsEntity;
 import com.ttit.myapp.entity.NewsListResponse;
 import com.ttit.myapp.util.StringUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,6 +76,17 @@ public class NewsFragment extends BaseFragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         newsAdapter = new NewsAdapter(getActivity());
         recyclerView.setAdapter(newsAdapter);
+        newsAdapter.setOnItemClickListener(new NewsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Serializable obj) {
+//                showToast("点击");
+                NewsEntity newsEntity = (NewsEntity) obj;
+                String url = "http://192.168.31.32:8089/newsDetail?title=" + newsEntity.getAuthorName();
+                Bundle bundle = new Bundle();
+                bundle.putString("url", url);
+                navigateToWithBundle(WebActivity.class, bundle);
+            }
+        });
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {

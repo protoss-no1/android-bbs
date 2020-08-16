@@ -61,6 +61,12 @@ public abstract class BaseFragment extends Fragment {
         startActivity(in);
     }
 
+    public void navigateToWithBundle(Class cls, Bundle bundle) {
+        Intent in = new Intent(getActivity(), cls);
+        in.putExtras(bundle);
+        startActivity(in);
+    }
+
     protected void saveStringToSp(String key, String val) {
         SharedPreferences sp = getActivity().getSharedPreferences("sp_ttit", MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();

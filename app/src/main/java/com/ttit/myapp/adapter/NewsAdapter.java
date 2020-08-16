@@ -15,6 +15,7 @@ import com.ttit.myapp.R;
 import com.ttit.myapp.entity.NewsEntity;
 import com.ttit.myapp.view.CircleTransform;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -25,6 +26,11 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
     private List<NewsEntity> datas;
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
 
     public void setDatas(List<NewsEntity> datas) {
         this.datas = datas;
@@ -70,7 +76,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             vh.author.setText(newsEntity.getAuthorName());
             vh.comment.setText(newsEntity.getCommentCount() + "评论 .");
             vh.time.setText(newsEntity.getReleaseDate());
-
+            vh.newsEntity = newsEntity;
             Picasso.with(mContext)
                     .load(newsEntity.getHeaderUrl())
                     .transform(new CircleTransform())
@@ -85,7 +91,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             vh.author.setText(newsEntity.getAuthorName());
             vh.comment.setText(newsEntity.getCommentCount() + "评论 .");
             vh.time.setText(newsEntity.getReleaseDate());
-
+            vh.newsEntity = newsEntity;
             Picasso.with(mContext)
                     .load(newsEntity.getHeaderUrl())
                     .transform(new CircleTransform())
@@ -106,7 +112,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             vh.author.setText(newsEntity.getAuthorName());
             vh.comment.setText(newsEntity.getCommentCount() + "评论 .");
             vh.time.setText(newsEntity.getReleaseDate());
-
+            vh.newsEntity = newsEntity;
             Picasso.with(mContext)
                     .load(newsEntity.getHeaderUrl())
                     .transform(new CircleTransform())
@@ -134,6 +140,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private TextView time;
         private ImageView header;
         private ImageView thumb;
+        private NewsEntity newsEntity;
 
         public ViewHolderOne(@NonNull View view) {
             super(view);
@@ -143,6 +150,12 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             time = view.findViewById(R.id.time);
             header = view.findViewById(R.id.header);
             thumb = view.findViewById(R.id.thumb);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onItemClick(newsEntity);
+                }
+            });
         }
     }
 
@@ -153,6 +166,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private TextView time;
         private ImageView header;
         private ImageView pic1, pic2, pic3;
+        private NewsEntity newsEntity;
 
         public ViewHolderTwo(@NonNull View view) {
             super(view);
@@ -164,6 +178,12 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             pic1 = view.findViewById(R.id.pic1);
             pic2 = view.findViewById(R.id.pic2);
             pic3 = view.findViewById(R.id.pic3);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onItemClick(newsEntity);
+                }
+            });
         }
     }
 
@@ -174,6 +194,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private TextView time;
         private ImageView header;
         private ImageView thumb;
+        private NewsEntity newsEntity;
 
         public ViewHolderThree(@NonNull View view) {
             super(view);
@@ -183,6 +204,16 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             time = view.findViewById(R.id.time);
             header = view.findViewById(R.id.header);
             thumb = view.findViewById(R.id.thumb);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onItemClick(newsEntity);
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Serializable obj);
     }
 }
