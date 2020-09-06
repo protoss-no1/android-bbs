@@ -1,9 +1,14 @@
 package com.ttit.myapp.api;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.ttit.myapp.activity.LoginActivity;
 import com.ttit.myapp.util.StringUtils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -19,6 +24,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class Api {
     private static OkHttpClient client;
@@ -68,10 +75,13 @@ public class Api {
         });
     }
 
-    public void getRequest(final TtitCallback callback) {
+    public void getRequest(Context context, final TtitCallback callback) {
+        SharedPreferences sp = context.getSharedPreferences("sp_ttit", MODE_PRIVATE);
+        String token = sp.getString("token", "");
         String url = getAppendUrl(requestUrl, mParams);
         Request request = new Request.Builder()
                 .url(url)
+                .addHeader("token", token)
                 .get()
                 .build();
         Call call = client.newCall(request);
@@ -85,6 +95,16 @@ public class Api {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String result = response.body().string();
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    String code = jsonObject.getString("code");
+                    if (code.equals("401")) {
+                        Intent in = new Intent(context, LoginActivity.class);
+                        context.startActivity(in);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 callback.onSuccess(result);
             }
         });

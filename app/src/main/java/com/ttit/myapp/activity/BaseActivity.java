@@ -43,6 +43,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(in);
     }
 
+    public void navigateToWithFlag(Class cls, int flags) {
+        Intent in = new Intent(mContext, cls);
+        in.setFlags(flags);
+        startActivity(in);
+    }
+
     protected void saveStringToSp(String key, String val) {
         SharedPreferences sp = getSharedPreferences("sp_ttit", MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -50,5 +56,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    protected String getStringFromSp(String key) {
+        SharedPreferences sp = getSharedPreferences("sp_ttit", MODE_PRIVATE);
+        return sp.getString(key, "");
+    }
 
 }

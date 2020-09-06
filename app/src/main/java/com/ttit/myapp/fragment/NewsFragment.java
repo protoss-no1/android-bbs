@@ -13,7 +13,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.ttit.myapp.R;
-import com.ttit.myapp.activity.LoginActivity;
 import com.ttit.myapp.activity.WebActivity;
 import com.ttit.myapp.adapter.NewsAdapter;
 import com.ttit.myapp.api.Api;
@@ -21,7 +20,6 @@ import com.ttit.myapp.api.ApiConfig;
 import com.ttit.myapp.api.TtitCallback;
 import com.ttit.myapp.entity.NewsEntity;
 import com.ttit.myapp.entity.NewsListResponse;
-import com.ttit.myapp.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -105,52 +103,45 @@ public class NewsFragment extends BaseFragment {
     }
 
     private void getNewsList(final boolean isRefresh) {
-        String token = getStringFromSp("token");
-        if (!StringUtils.isEmpty(token)) {
-            HashMap<String, Object> params = new HashMap<>();
-            params.put("token", token);
-            params.put("page", pageNum);
-            params.put("limit", ApiConfig.PAGE_SIZE);
-            Api.config(ApiConfig.NEWS_LIST, params).getRequest(new TtitCallback() {
-                @Override
-                public void onSuccess(final String res) {
-                    if (isRefresh) {
-                        refreshLayout.finishRefresh(true);
-                    } else {
-                        refreshLayout.finishLoadMore(true);
-                    }
-                    NewsListResponse response = new Gson().fromJson(res, NewsListResponse.class);
-                    if (response != null && response.getCode() == 0) {
-                        List<NewsEntity> list = response.getPage().getList();
-                        if (list != null && list.size() > 0) {
-                            if (isRefresh) {
-                                datas = list;
-                            } else {
-                                datas.addAll(list);
-                            }
-                            mHandler.sendEmptyMessage(0);
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("page", pageNum);
+        params.put("limit", ApiConfig.PAGE_SIZE);
+        Api.config(ApiConfig.NEWS_LIST, params).getRequest(getActivity(), new TtitCallback() {
+            @Override
+            public void onSuccess(final String res) {
+                if (isRefresh) {
+                    refreshLayout.finishRefresh(true);
+                } else {
+                    refreshLayout.finishLoadMore(true);
+                }
+                NewsListResponse response = new Gson().fromJson(res, NewsListResponse.class);
+                if (response != null && response.getCode() == 0) {
+                    List<NewsEntity> list = response.getPage().getList();
+                    if (list != null && list.size() > 0) {
+                        if (isRefresh) {
+                            datas = list;
                         } else {
-                            if (isRefresh) {
-                                showToastSync("暂时无数据");
-                            } else {
-                                showToastSync("没有更多数据");
-                            }
+                            datas.addAll(list);
+                        }
+                        mHandler.sendEmptyMessage(0);
+                    } else {
+                        if (isRefresh) {
+                            showToastSync("暂时无数据");
+                        } else {
+                            showToastSync("没有更多数据");
                         }
                     }
                 }
+            }
 
-                @Override
-                public void onFailure(Exception e) {
-                    if (isRefresh) {
-                        refreshLayout.finishRefresh(true);
-                    } else {
-                        refreshLayout.finishLoadMore(true);
-                    }
+            @Override
+            public void onFailure(Exception e) {
+                if (isRefresh) {
+                    refreshLayout.finishRefresh(true);
+                } else {
+                    refreshLayout.finishLoadMore(true);
                 }
-            });
-        } else {
-            navigateTo(LoginActivity.class);
-        }
-
+            }
+        });
     }
 }

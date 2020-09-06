@@ -1,5 +1,6 @@
 package com.ttit.myapp.activity;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -66,7 +67,8 @@ public class LoginActivity extends BaseActivity {
                 if (loginResponse.getCode() == 0) {
                     String token = loginResponse.getToken();
                     saveStringToSp("token", token);
-                    navigateTo(HomeActivity.class);
+                    navigateToWithFlag(HomeActivity.class,
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     showToastSync("登录成功");
                 } else {
                     showToastSync("登录失败");
