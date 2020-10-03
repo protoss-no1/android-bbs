@@ -11,7 +11,7 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 01/08/2020 16:01:55
+ Date: 04/10/2020 04:15:32
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `news`  (
   `release_date` datetime(0) NULL DEFAULT NULL COMMENT '发布日期',
   `type` int(1) NULL DEFAULT NULL COMMENT '资讯显示类型',
   PRIMARY KEY (`news_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of news
@@ -53,7 +53,7 @@ CREATE TABLE `news_thumb`  (
   `thumb_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '缩略图url',
   `news_id` int(10) NULL DEFAULT NULL COMMENT '资讯id',
   PRIMARY KEY (`thumb_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of news_thumb
@@ -63,15 +63,15 @@ INSERT INTO `news_thumb` VALUES (2, 'http://p1-tt.byteimg.com/large/pgc-image/71
 INSERT INTO `news_thumb` VALUES (3, 'http://p1-tt.byteimg.com/large/pgc-image/33b9831739764bdb8a157efce048ec85?from=pc', 2);
 INSERT INTO `news_thumb` VALUES (4, 'http://p3-tt.byteimg.com/large/pgc-image/c8a4e737b54d41c1a84722fc1c6d191d?from=pc', 2);
 INSERT INTO `news_thumb` VALUES (5, 'http://p6-tt.byteimg.com/large/pgc-image/S6CLixgC4HSrXD?from=pc', 3);
-INSERT INTO `news_thumb` VALUES (6, 'http://p6-tt.byteimg.com/large/pgc-image/17fe1be328e149c9aa400dcf8a8c4dd6?from=pc', 4);
+INSERT INTO `news_thumb` VALUES (6, 'http://p3-tt.byteimg.com/large/pgc-image/02973348d57d4dfba2d001f82caa3fcc?from=pc', 4);
 INSERT INTO `news_thumb` VALUES (7, 'http://p1-tt.byteimg.com/large/pgc-image/a456c50fff344122b1b20ed99026c3f8?from=pc', 5);
 INSERT INTO `news_thumb` VALUES (8, 'http://p3-tt.byteimg.com/large/pgc-image/02973348d57d4dfba2d001f82caa3fcc?from=pc', 5);
 INSERT INTO `news_thumb` VALUES (9, 'http://p1-tt.byteimg.com/large/pgc-image/7add3e2a4f754d0baccc607cde132b5f?from=pc', 5);
 INSERT INTO `news_thumb` VALUES (10, 'http://p1-tt.byteimg.com/large/pgc-image/b957bfacdd134aa9a1a7e47d40d1be4b?from=pc', 6);
 INSERT INTO `news_thumb` VALUES (11, 'https://p3.pstatp.com/list/190x124/pgc-image/2b5f07505b67498e83e2faa32d637e5c', 7);
-INSERT INTO `news_thumb` VALUES (12, 'http://p6-tt.byteimg.com/large/pgc-image/36357b0bc5e54b0783c7ebe0bf9aefbd?from=pc', 8);
-INSERT INTO `news_thumb` VALUES (13, 'http://p1-tt.byteimg.com/large/pgc-image/d8c92b02eeb6490084c020c76c876c7a?from=pc', 8);
-INSERT INTO `news_thumb` VALUES (14, 'http://p3-tt.byteimg.com/large/pgc-image/7dfc0ccdd0ba4b4093fa5663891b5780?from=pc', 8);
+INSERT INTO `news_thumb` VALUES (12, 'https://p3.pstatp.com/list/190x124/pgc-image/2b5f07505b67498e83e2faa32d637e5c', 8);
+INSERT INTO `news_thumb` VALUES (13, 'https://p3.pstatp.com/list/190x124/pgc-image/2b5f07505b67498e83e2faa32d637e5c', 8);
+INSERT INTO `news_thumb` VALUES (14, 'https://p3.pstatp.com/list/190x124/pgc-image/2b5f07505b67498e83e2faa32d637e5c', 8);
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers
@@ -210,7 +210,7 @@ CREATE TABLE `qrtz_scheduler_state`  (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('RenrenScheduler', 'LAPTOP-FJHFR2EJ1596264803924', 1596268669688, 15000);
+INSERT INTO `qrtz_scheduler_state` VALUES ('RenrenScheduler', 'LAPTOP-FJHFR2EJ1601751390126', 1601755906971, 15000);
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -290,7 +290,7 @@ CREATE TABLE `qrtz_triggers`  (
 -- ----------------------------
 -- Records of qrtz_triggers
 -- ----------------------------
-INSERT INTO `qrtz_triggers` VALUES ('RenrenScheduler', 'TASK_1', 'DEFAULT', 'TASK_1', 'DEFAULT', NULL, 1596268800000, 1596267000000, 5, 'WAITING', 'CRON', 1584246824000, 0, NULL, 2, 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372002E696F2E72656E72656E2E6D6F64756C65732E6A6F622E656E746974792E5363686564756C654A6F62456E7469747900000000000000010200074C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C0006706172616D7371007E00094C000672656D61726B71007E00094C00067374617475737400134C6A6176612F6C616E672F496E74656765723B7870740008746573745461736B7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000170DC7532287874000E3020302F3330202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000000000000174000672656E72656E74000CE58F82E695B0E6B58BE8AF95737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C75657871007E0013000000007800);
+INSERT INTO `qrtz_triggers` VALUES ('RenrenScheduler', 'TASK_1', 'DEFAULT', 'TASK_1', 'DEFAULT', NULL, 1601757000000, 1601755200000, 5, 'WAITING', 'CRON', 1584246824000, 0, NULL, 2, 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372002E696F2E72656E72656E2E6D6F64756C65732E6A6F622E656E746974792E5363686564756C654A6F62456E7469747900000000000000010200074C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C0006706172616D7371007E00094C000672656D61726B71007E00094C00067374617475737400134C6A6176612F6C616E672F496E74656765723B7870740008746573745461736B7372000E6A6176612E7574696C2E44617465686A81014B5974190300007870770800000170DC7532287874000E3020302F3330202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000000000000174000672656E72656E74000CE58F82E695B0E6B58BE8AF95737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C75657871007E0013000000007800);
 
 -- ----------------------------
 -- Table structure for schedule_job
@@ -327,7 +327,7 @@ CREATE TABLE `schedule_job_log`  (
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`log_id`) USING BTREE,
   INDEX `job_id`(`job_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 182 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of schedule_job_log
@@ -456,6 +456,69 @@ INSERT INTO `schedule_job_log` VALUES (121, 1, 'testTask', 'renren', 0, NULL, 0,
 INSERT INTO `schedule_job_log` VALUES (122, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 14:30:00');
 INSERT INTO `schedule_job_log` VALUES (123, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-01 15:00:00');
 INSERT INTO `schedule_job_log` VALUES (124, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 15:30:00');
+INSERT INTO `schedule_job_log` VALUES (125, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-01 16:30:00');
+INSERT INTO `schedule_job_log` VALUES (126, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-02 14:00:00');
+INSERT INTO `schedule_job_log` VALUES (127, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-02 14:30:00');
+INSERT INTO `schedule_job_log` VALUES (128, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-02 15:00:00');
+INSERT INTO `schedule_job_log` VALUES (129, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-02 15:30:00');
+INSERT INTO `schedule_job_log` VALUES (130, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-02 16:00:00');
+INSERT INTO `schedule_job_log` VALUES (131, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-02 16:30:00');
+INSERT INTO `schedule_job_log` VALUES (132, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-02 17:00:00');
+INSERT INTO `schedule_job_log` VALUES (133, 1, 'testTask', 'renren', 0, NULL, 2, '2020-08-02 17:30:00');
+INSERT INTO `schedule_job_log` VALUES (134, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-03 22:30:00');
+INSERT INTO `schedule_job_log` VALUES (135, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-03 23:00:00');
+INSERT INTO `schedule_job_log` VALUES (136, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-03 23:30:00');
+INSERT INTO `schedule_job_log` VALUES (137, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-05 22:00:00');
+INSERT INTO `schedule_job_log` VALUES (138, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-05 23:00:00');
+INSERT INTO `schedule_job_log` VALUES (139, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-05 23:30:00');
+INSERT INTO `schedule_job_log` VALUES (140, 1, 'testTask', 'renren', 0, NULL, 4, '2020-08-06 00:00:00');
+INSERT INTO `schedule_job_log` VALUES (141, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-06 00:30:00');
+INSERT INTO `schedule_job_log` VALUES (142, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-11 09:30:00');
+INSERT INTO `schedule_job_log` VALUES (143, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-11 10:00:00');
+INSERT INTO `schedule_job_log` VALUES (144, 1, 'testTask', 'renren', 0, NULL, 2, '2020-08-16 22:30:00');
+INSERT INTO `schedule_job_log` VALUES (145, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-16 23:00:00');
+INSERT INTO `schedule_job_log` VALUES (146, 1, 'testTask', 'renren', 0, NULL, 2, '2020-08-16 23:30:00');
+INSERT INTO `schedule_job_log` VALUES (147, 1, 'testTask', 'renren', 0, NULL, 18, '2020-08-17 00:00:00');
+INSERT INTO `schedule_job_log` VALUES (148, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-17 00:30:00');
+INSERT INTO `schedule_job_log` VALUES (149, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-20 16:00:00');
+INSERT INTO `schedule_job_log` VALUES (150, 1, 'testTask', 'renren', 0, NULL, 2, '2020-08-20 16:30:00');
+INSERT INTO `schedule_job_log` VALUES (151, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-20 17:00:00');
+INSERT INTO `schedule_job_log` VALUES (152, 1, 'testTask', 'renren', 0, NULL, 0, '2020-08-20 17:30:00');
+INSERT INTO `schedule_job_log` VALUES (153, 1, 'testTask', 'renren', 0, NULL, 1, '2020-08-26 17:30:00');
+INSERT INTO `schedule_job_log` VALUES (154, 1, 'testTask', 'renren', 0, NULL, 0, '2020-09-06 18:00:00');
+INSERT INTO `schedule_job_log` VALUES (155, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-06 18:30:00');
+INSERT INTO `schedule_job_log` VALUES (156, 1, 'testTask', 'renren', 0, NULL, 0, '2020-09-06 19:00:00');
+INSERT INTO `schedule_job_log` VALUES (157, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-06 19:30:00');
+INSERT INTO `schedule_job_log` VALUES (158, 1, 'testTask', 'renren', 0, NULL, 0, '2020-09-06 20:00:00');
+INSERT INTO `schedule_job_log` VALUES (159, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-06 20:30:00');
+INSERT INTO `schedule_job_log` VALUES (160, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-06 21:00:00');
+INSERT INTO `schedule_job_log` VALUES (161, 1, 'testTask', 'renren', 0, NULL, 0, '2020-09-06 21:30:00');
+INSERT INTO `schedule_job_log` VALUES (162, 1, 'testTask', 'renren', 0, NULL, 0, '2020-09-06 22:00:00');
+INSERT INTO `schedule_job_log` VALUES (163, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-06 22:30:00');
+INSERT INTO `schedule_job_log` VALUES (164, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-06 23:00:00');
+INSERT INTO `schedule_job_log` VALUES (165, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-16 22:00:00');
+INSERT INTO `schedule_job_log` VALUES (166, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-16 22:30:00');
+INSERT INTO `schedule_job_log` VALUES (167, 1, 'testTask', 'renren', 0, NULL, 2, '2020-09-16 23:00:00');
+INSERT INTO `schedule_job_log` VALUES (168, 1, 'testTask', 'renren', 0, NULL, 2, '2020-09-16 23:30:00');
+INSERT INTO `schedule_job_log` VALUES (169, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-17 00:30:00');
+INSERT INTO `schedule_job_log` VALUES (170, 1, 'testTask', 'renren', 0, NULL, 0, '2020-09-28 10:00:00');
+INSERT INTO `schedule_job_log` VALUES (171, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-28 10:30:00');
+INSERT INTO `schedule_job_log` VALUES (172, 1, 'testTask', 'renren', 0, NULL, 2, '2020-09-28 11:00:00');
+INSERT INTO `schedule_job_log` VALUES (173, 1, 'testTask', 'renren', 0, NULL, 1, '2020-09-28 11:30:00');
+INSERT INTO `schedule_job_log` VALUES (174, 1, 'testTask', 'renren', 0, NULL, 0, '2020-10-03 11:00:00');
+INSERT INTO `schedule_job_log` VALUES (175, 1, 'testTask', 'renren', 0, NULL, 0, '2020-10-03 12:30:00');
+INSERT INTO `schedule_job_log` VALUES (176, 1, 'testTask', 'renren', 0, NULL, 0, '2020-10-03 13:00:00');
+INSERT INTO `schedule_job_log` VALUES (177, 1, 'testTask', 'renren', 0, NULL, 0, '2020-10-03 13:30:00');
+INSERT INTO `schedule_job_log` VALUES (178, 1, 'testTask', 'renren', 0, NULL, 0, '2020-10-03 22:30:00');
+INSERT INTO `schedule_job_log` VALUES (179, 1, 'testTask', 'renren', 0, NULL, 5, '2020-10-04 00:00:00');
+INSERT INTO `schedule_job_log` VALUES (180, 1, 'testTask', 'renren', 0, NULL, 2, '2020-10-04 00:30:00');
+INSERT INTO `schedule_job_log` VALUES (181, 1, 'testTask', 'renren', 0, NULL, 0, '2020-10-04 01:00:00');
+INSERT INTO `schedule_job_log` VALUES (182, 1, 'testTask', 'renren', 0, NULL, 1, '2020-10-04 01:30:00');
+INSERT INTO `schedule_job_log` VALUES (183, 1, 'testTask', 'renren', 0, NULL, 1, '2020-10-04 02:00:00');
+INSERT INTO `schedule_job_log` VALUES (184, 1, 'testTask', 'renren', 0, NULL, 1, '2020-10-04 02:30:00');
+INSERT INTO `schedule_job_log` VALUES (185, 1, 'testTask', 'renren', 0, NULL, 1, '2020-10-04 03:00:00');
+INSERT INTO `schedule_job_log` VALUES (186, 1, 'testTask', 'renren', 0, NULL, 1, '2020-10-04 03:30:00');
+INSERT INTO `schedule_job_log` VALUES (187, 1, 'testTask', 'renren', 0, NULL, 0, '2020-10-04 04:00:00');
 
 -- ----------------------------
 -- Table structure for sys_captcha
@@ -471,12 +534,23 @@ CREATE TABLE `sys_captcha`  (
 -- ----------------------------
 -- Records of sys_captcha
 -- ----------------------------
+INSERT INTO `sys_captcha` VALUES ('381cfdb2-2a69-4653-87af-68d0415b19bb', '7n4ga', '2020-08-03 23:12:43');
 INSERT INTO `sys_captcha` VALUES ('3de67b53-d287-41e6-85fa-5d9432e9722b', '7ny73', '2020-03-15 19:36:51');
+INSERT INTO `sys_captcha` VALUES ('47a06bd4-2e07-4ae8-8d7c-252dd6d8699e', '65fwm', '2020-08-03 23:17:50');
+INSERT INTO `sys_captcha` VALUES ('4909766f-fe2c-4277-8507-ed1761c38a01', 'cnxcf', '2020-08-03 23:12:20');
+INSERT INTO `sys_captcha` VALUES ('5f39812a-3a62-4d17-8c3e-c03ec66e61ca', '6yxx8', '2020-08-03 23:12:40');
+INSERT INTO `sys_captcha` VALUES ('6515975d-9bae-4f61-8e4d-04a874e34a28', 'b7g65', '2020-08-03 23:12:14');
+INSERT INTO `sys_captcha` VALUES ('6f89997a-282b-46f9-8e61-192501c19175', '4fe4f', '2020-08-03 23:17:57');
+INSERT INTO `sys_captcha` VALUES ('7fc52f6c-517c-4883-8440-e99416a9d787', 'f5b4e', '2020-08-03 23:12:39');
+INSERT INTO `sys_captcha` VALUES ('a1ab51c8-c115-4e79-8da7-4d285cf3efd8', '7b3b7', '2020-08-20 16:25:58');
 INSERT INTO `sys_captcha` VALUES ('a5409fe3-2a92-47cd-84e7-2845dad38591', 'benn5', '2020-08-01 13:18:24');
 INSERT INTO `sys_captcha` VALUES ('b038fd02-96d8-42aa-8466-f758178b8217', '2cd82', '2020-03-15 19:36:52');
+INSERT INTO `sys_captcha` VALUES ('cc8070e6-5ffc-4cc4-8cb3-7978d8439ce7', 'fe2c8', '2020-08-03 23:12:31');
 INSERT INTO `sys_captcha` VALUES ('d20ed40e-2c9b-4c27-88c6-a034af18ec7b', '7nna2', '2020-03-15 19:36:45');
+INSERT INTO `sys_captcha` VALUES ('demoData', 'axcwp', '2020-08-20 15:32:58');
 INSERT INTO `sys_captcha` VALUES ('dfd3378c-58c3-4f62-8f01-7c5e26aab62c', 'eed52', '2020-03-15 19:36:50');
 INSERT INTO `sys_captcha` VALUES ('e67fc8a1-29e3-46cc-8613-202d56e3888b', 'wmdn6', '2020-08-01 13:16:03');
+INSERT INTO `sys_captcha` VALUES ('ff97f28e-4ee2-4502-8e33-5b0d5a591ca3', 'daem7', '2020-08-20 16:26:10');
 
 -- ----------------------------
 -- Table structure for sys_config
@@ -511,7 +585,7 @@ CREATE TABLE `sys_log`  (
   `ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'IP地址',
   `create_date` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_log
@@ -556,7 +630,7 @@ CREATE TABLE `sys_menu`  (
   `icon` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '菜单图标',
   `order_num` int(11) NULL DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -795,7 +869,7 @@ CREATE TABLE `sys_user_token`  (
 -- ----------------------------
 -- Records of sys_user_token
 -- ----------------------------
-INSERT INTO `sys_user_token` VALUES (1, '274592f45960f80a4cb78ac8051cd21d', '2020-08-02 01:11:41', '2020-08-01 13:11:41');
+INSERT INTO `sys_user_token` VALUES (1, '551ce836ec874590c5873f1c5a30ad4d', '2020-08-21 04:23:40', '2020-08-20 16:23:40');
 INSERT INTO `sys_user_token` VALUES (4, '958fb8a2b949ec2302de99500ba6bb52', '2020-07-20 06:04:27', '2020-07-19 18:04:27');
 INSERT INTO `sys_user_token` VALUES (5, '2e59fc3957b7020068919af1dd21a225', '2020-07-20 06:08:08', '2020-07-19 18:08:08');
 
