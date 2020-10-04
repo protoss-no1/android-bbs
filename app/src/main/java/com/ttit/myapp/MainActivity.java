@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        if (!StringUtils.isEmpty(getStringFromSp("token"))) {
+        if (!StringUtils.isEmpty(findByKey("token"))) {
             navigateTo(HomeActivity.class);
             finish();
         }

@@ -1,9 +1,11 @@
 package com.ttit.myapp.fragment;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.ttit.myapp.R;
+import com.ttit.myapp.activity.LoginActivity;
 import com.ttit.myapp.activity.MyCollectActivity;
 
 import butterknife.BindView;
@@ -50,7 +52,9 @@ public class MyFragment extends BaseFragment {
             case R.id.rl_skin:
                 break;
             case R.id.rl_logout:
-                showToast("退出登录");
+                removeByKey("token");
+                navigateToWithFlag(LoginActivity.class,
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 break;
         }
     }
