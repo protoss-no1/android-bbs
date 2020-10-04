@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ttit.myapp.R;
+import com.ttit.myapp.activity.MyCollectActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -44,6 +45,7 @@ public class MyFragment extends BaseFragment {
 
                 break;
             case R.id.rl_collect:
+                navigateTo(MyCollectActivity.class);
                 break;
             case R.id.rl_skin:
                 break;

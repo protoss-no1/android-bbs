@@ -10,5 +10,6 @@ public class ApiConfig {
     public static final String VIDEO_CATEGORY_LIST = "/app/videocategory/list";//视频类型列表
     public static final String NEWS_LIST = "/app/news/api/list";//资讯列表
     public static final String VIDEO_UPDATE_COUNT = "/app/videolist/updateCount";//更新点赞,收藏,评论
+    public static final String VIDEO_MYCOLLECT = "/app/videolist/mycollect";//我的收藏
 
 }

@@ -213,7 +213,7 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         params.put("vid", vid);
         params.put("type", type);
         params.put("flag", flag);
-        Api.config(ApiConfig.VIDEO_UPDATE_COUNT, params).postRequest(new TtitCallback() {
+        Api.config(ApiConfig.VIDEO_UPDATE_COUNT, params).postRequest(mContext, new TtitCallback() {
             @Override
             public void onSuccess(final String res) {
                 Log.e("onSuccess", res);
