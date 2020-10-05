@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.SkinAppCompatDelegateImpl;
 
 import com.dueeeke.videoplayer.player.VideoViewManager;
 
@@ -65,5 +68,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected VideoViewManager getVideoViewManager() {
         return VideoViewManager.instance();
+    }
+
+    @NonNull
+    @Override
+    public AppCompatDelegate getDelegate() {
+        return SkinAppCompatDelegateImpl.get(this, this);
     }
 }

@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="我的"
-                    android:textColor="#ffffff"
+                    android:textColor="@color/skin_text_white"
                     android:textSize="18sp" />
             </RelativeLayout>
 
@@ -54,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="途途IT学堂"
-                        android:textColor="#ffffff"
+                        android:textColor="@color/skin_text_white"
                         android:textSize="16sp" />
 
                     <TextView
@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="欢迎来到此平台"
-                        android:textColor="#ffffff"
+                        android:textColor="@color/skin_text_white"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -83,14 +83,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10"
-                        android:textColor="#ffffff" />
+                        android:textColor="@color/skin_text_white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="阅读"
-                        android:textColor="#ffffff" />
+                        android:textColor="@color/skin_text_white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -103,14 +103,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30"
-                        android:textColor="#ffffff" />
+                        android:textColor="@color/skin_text_white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="点赞"
-                        android:textColor="#ffffff" />
+                        android:textColor="@color/skin_text_white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -123,14 +123,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="60"
-                        android:textColor="#ffffff" />
+                        android:textColor="@color/skin_text_white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="评论"
-                        android:textColor="#ffffff" />
+                        android:textColor="@color/skin_text_white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -143,14 +143,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100"
-                        android:textColor="#ffffff" />
+                        android:textColor="@color/skin_text_white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="分享"
-                        android:textColor="#ffffff" />
+                        android:textColor="@color/skin_text_white" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -279,22 +279,22 @@
         </LinearLayout>
     </LinearLayout>
 
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/rl_logout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginLeft="30dp"-->
-<!--        android:layout_marginRight="30dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:background="@drawable/shape_my_logout_bg">-->
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/rl_logout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_marginLeft="30dp"-->
+    <!--        android:layout_marginRight="30dp"-->
+    <!--        android:layout_marginBottom="20dp"-->
+    <!--        android:background="@drawable/shape_my_logout_bg">-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:text="退出登录"-->
-<!--            android:textColor="#ffffff"-->
-<!--            android:textSize="18sp" />-->
-<!--    </RelativeLayout>-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_centerInParent="true"-->
+    <!--            android:text="退出登录"-->
+    <!--            android:textColor="@color/skin_text_white"-->
+    <!--            android:textSize="18sp" />-->
+    <!--    </RelativeLayout>-->
 </RelativeLayout>

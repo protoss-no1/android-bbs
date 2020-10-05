@@ -10,6 +10,7 @@ import com.ttit.myapp.activity.MyCollectActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import skin.support.SkinCompatManager;
 
 
 public class MyFragment extends BaseFragment {
@@ -50,6 +51,15 @@ public class MyFragment extends BaseFragment {
                 navigateTo(MyCollectActivity.class);
                 break;
             case R.id.rl_skin:
+                String skin = findByKey("skin");
+                if (skin.equals("night")) {
+                    // 恢复应用默认皮肤
+                    SkinCompatManager.getInstance().restoreDefaultTheme();
+                    insertVal("skin", "default");
+                } else {
+                    SkinCompatManager.getInstance().loadSkin("night", SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN); // 后缀加载
+                    insertVal("skin", "night");
+                }
                 break;
             case R.id.rl_logout:
                 removeByKey("token");
